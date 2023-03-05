@@ -64,7 +64,7 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                     child: TextField(
                         keyboardType: TextInputType.emailAddress,
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         onChanged: (value) {
                           email = value; //get the value entered by user.
                         },
