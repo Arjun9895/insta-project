@@ -23,8 +23,8 @@ class Profile extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.settings),
               onPressed: () {
-                // Navigator.push(context,
-                //    MaterialPageRoute(builder: (context) => Settings()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => settings()));
               },
             )
           ],
@@ -40,17 +40,15 @@ class Profile extends StatelessWidget {
                     return Text("Something went Wrong");
                   }
                   debugPrint(snapshot.data.data().toString());
-                  return Column(
-                    children: [
-                      InkWell(
-                        //onTap: () {},
-                        child: Container(
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: NetworkImage(""), fit: BoxFit.cover)),
-                          child: Container(
-                            width: double.infinity,
-                            height: 200,
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Container(
                               alignment: Alignment(0.0, 2.5),
                               child: InkWell(
@@ -64,166 +62,144 @@ class Profile extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 60,
-                      ),
-                      Container(
-                        child: InkWell(
-                          onTap: () {},
-                          child: Text(
-                            snapshot.data.data()["Name"],
-                            style: TextStyle(
-                                fontSize: 25.0,
-                                color: Colors.black,
-                                letterSpacing: 2.0,
-                                fontWeight: FontWeight.w400),
+                        SizedBox(
+                          height: 60,
+                        ),
+                        Container(
+                          child: InkWell(
+                            onTap: () {},
+                            child: Text(
+                              snapshot.data.data()["Name"],
+                              style: TextStyle(
+                                  fontSize: 25.0,
+                                  color: Colors.black,
+                                  letterSpacing: 2.0,
+                                  fontWeight: FontWeight.w400),
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Card(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 8.0),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Expanded(
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    InkWell(
-                                      onTap: () {},
-                                      child: Text(
-                                        "Following",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 7,
+                                    Text(
+                                      "Followers",
+                                      style: TextStyle(fontSize: 20),
                                     ),
                                     Text(
-                                      snapshot.data.data()["Following"],
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 22.0,
-                                          fontWeight: FontWeight.w300),
-                                    )
+                                        snapshot.data
+                                            .data()["Follower"]
+                                            .toString(),
+                                        style: TextStyle(fontSize: 20))
                                   ],
                                 ),
                               ),
-                              Expanded(
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    InkWell(
-                                      onTap: () {},
-                                      child: Text(
-                                        "Followers",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 7,
+                                    Text(
+                                      "Following",
+                                      style: TextStyle(fontSize: 20),
                                     ),
                                     Text(
-                                      snapshot.data.data()["Followers"],
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 22.0,
-                                          fontWeight: FontWeight.w300),
+                                      snapshot.data
+                                          .data()["Following"]
+                                          .toString(),
+                                      style: TextStyle(fontSize: 20),
                                     )
                                   ],
                                 ),
-                              ),
+                              )
                             ],
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 50,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(80.0),
-                              ),
-                              child: Ink(
+                        SizedBox(
+                          height: 50,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            InkWell(
+                              onTap: () {},
+                              child: Container(
                                 decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight,
-                                      colors: [Colors.grey, Colors.black]),
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                                child: Container(
-                                  constraints: BoxConstraints(
-                                    maxWidth: 100.0,
-                                    maxHeight: 40.0,
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    "Posts",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12.0,
-                                        letterSpacing: 2.0,
-                                        fontWeight: FontWeight.w300),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(80.0),
-                              ),
-                              child: Ink(
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight,
-                                      colors: [Colors.grey, Colors.black]),
                                   borderRadius: BorderRadius.circular(80.0),
                                 ),
-                                child: Container(
-                                  constraints: BoxConstraints(
-                                    maxWidth: 100.0,
-                                    maxHeight: 40.0,
+                                child: Ink(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
+                                        colors: [Colors.grey, Colors.black]),
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    "Tag",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12.0,
-                                        letterSpacing: 2.0,
-                                        fontWeight: FontWeight.w300),
+                                  child: Container(
+                                    constraints: BoxConstraints(
+                                      maxWidth: 100.0,
+                                      maxHeight: 40.0,
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "Posts",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12.0,
+                                          letterSpacing: 2.0,
+                                          fontWeight: FontWeight.w300),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          )
-                        ],
-                      )
-                    ],
+                            InkWell(
+                              onTap: () {},
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(80.0),
+                                ),
+                                child: Ink(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
+                                        colors: [Colors.grey, Colors.black]),
+                                    borderRadius: BorderRadius.circular(80.0),
+                                  ),
+                                  child: Container(
+                                    constraints: BoxConstraints(
+                                      maxWidth: 100.0,
+                                      maxHeight: 40.0,
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "Tag",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12.0,
+                                          letterSpacing: 2.0,
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   );
                 }),
           ),
